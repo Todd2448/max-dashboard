@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAX Mission Control ⚡</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <div class="header-left">
+                <img src="images/logo.png" alt="MAX" class="header-logo">
+                <div>
+                    <h1 class="header-title">Mission Control</h1>
+                    <p class="header-sub">Max's AI Solutions — Live Operations</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="status-dot online"></div>
+                <span class="status-text">All Systems Online</span>
+                <span class="header-time" id="headerTime"></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container main">
+        <!-- Agent Status Cards -->
+        <section class="section">
+            <h2 class="section-title">🤖 Agent Status</h2>
+            <div class="agents-grid">
+                <!-- MAX -->
+                <div class="agent-card agent-primary">
+                    <div class="agent-header">
+                        <div class="agent-avatar">
+                            <img src="images/max-avatar.png" alt="MAX">
+                            <div class="agent-status-dot online"></div>
+                        </div>
+                        <div class="agent-info">
+                            <h3>MAX</h3>
+                            <span class="agent-model">Opus 4</span>
+                        </div>
+                        <span class="agent-badge badge-online">Online</span>
+                    </div>
+                    <p class="agent-role">Central Operator — Strategy, Decisions, Coordination</p>
+                    <div class="agent-stats">
+                        <div class="stat">
+                            <span class="stat-label">Uptime</span>
+                            <span class="stat-value" id="maxUptime">24/7</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Mode</span>
+                            <span class="stat-value">Autonomous</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Research Agent -->
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div class="agent-avatar avatar-research">
+                            <span class="avatar-emoji">🔍</span>
+                            <div class="agent-status-dot online"></div>
+                        </div>
+                        <div class="agent-info">
+                            <h3>Research Agent</h3>
+                            <span class="agent-model">Sonnet 4</span>
+                        </div>
+                        <span class="agent-badge badge-scheduled">Scheduled</span>
+                    </div>
+                    <p class="agent-role">Scans X, Reddit, Fiverr, YouTube for opportunities & trends</p>
+                    <div class="agent-stats">
+                        <div class="stat">
+                            <span class="stat-label">Schedule</span>
+                            <span class="stat-value">8am & 4pm</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Last Run</span>
+                            <span class="stat-value" id="researchLast">4:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coding Agent -->
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div class="agent-avatar avatar-coding">
+                            <span class="avatar-emoji">💻</span>
+                            <div class="agent-status-dot idle"></div>
+                        </div>
+                        <div class="agent-info">
+                            <h3>Coding Agent</h3>
+                            <span class="agent-model">Sonnet 4</span>
+                        </div>
+                        <span class="agent-badge badge-idle">Standby</span>
+                    </div>
+                    <p class="agent-role">Builds websites, scripts, integrations on demand</p>
+                    <div class="agent-stats">
+                        <div class="stat">
+                            <span class="stat-label">Trigger</span>
+                            <span class="stat-value">On Demand</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Status</span>
+                            <span class="stat-value">Ready</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- X Auto-Poster -->
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div class="agent-avatar avatar-social">
+                            <span class="avatar-emoji">📢</span>
+                            <div class="agent-status-dot online"></div>
+                        </div>
+                        <div class="agent-info">
+                            <h3>X Auto-Poster</h3>
+                            <span class="agent-model">Sonnet 4</span>
+                        </div>
+                        <span class="agent-badge badge-scheduled">Scheduled</span>
+                    </div>
+                    <p class="agent-role">Auto-posts to X/Twitter to build audience & attract leads</p>
+                    <div class="agent-stats">
+                        <div class="stat">
+                            <span class="stat-label">Schedule</span>
+                            <span class="stat-value">1pm & 6pm</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Last Post</span>
+                            <span class="stat-value" id="xLast">6:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pipeline -->
+        <section class="section">
+            <h2 class="section-title">📋 Pipeline</h2>
+            <div class="pipeline">
+                <div class="pipeline-col">
+                    <div class="pipeline-header incoming">📥 Incoming</div>
+                    <div class="pipeline-card">
+                        <div class="pipe-agent">🔍</div>
+                        <div>
+                            <p class="pipe-title">Daily Opportunity Scan</p>
+                            <p class="pipe-sub">Research Agent — Recurring</p>
+                        </div>
+                    </div>
+                    <div class="pipeline-card">
+                        <div class="pipe-agent">📢</div>
+                        <div>
+                            <p class="pipe-title">X Content Posts</p>
+                            <p class="pipe-sub">Auto-Poster — 2x daily</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pipeline-col">
+                    <div class="pipeline-header building">🔨 Building</div>
+                    <div class="pipeline-card active">
+                        <div class="pipe-agent">💻</div>
+                        <div>
+                            <p class="pipe-title">CleanScan App</p>
+                            <p class="pipe-sub">Research & product spec phase</p>
+                        </div>
+                    </div>
+                    <div class="pipeline-card active">
+                        <div class="pipe-agent">🤖</div>
+                        <div>
+                            <p class="pipe-title">PJ & Linda Pitch Video</p>
+                            <p class="pipe-sub">Awaiting details from Todd</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pipeline-col">
+                    <div class="pipeline-header review">👀 Review</div>
+                    <div class="pipeline-card">
+                        <div class="pipe-agent">🤖</div>
+                        <div>
+                            <p class="pipe-title">Revenue Roadmap</p>
+                            <p class="pipe-sub">$1M plan — in progress</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pipeline-col">
+                    <div class="pipeline-header live">✅ Live</div>
+                    <div class="pipeline-card done">
+                        <div class="pipe-agent">💻</div>
+                        <div>
+                            <p class="pipe-title">Website v1</p>
+                            <p class="pipe-sub">maxsaisolutions.com — deployed</p>
+                        </div>
+                    </div>
+                    <div class="pipeline-card done">
+                        <div class="pipe-agent">🤖</div>
+                        <div>
+                            <p class="pipe-title">Research Agent</p>
+                            <p class="pipe-sub">Running 2x daily</p>
+                        </div>
+                    </div>
+                    <div class="pipeline-card done">
+                        <div class="pipe-agent">📢</div>
+                        <div>
+                            <p class="pipe-title">X Auto-Posting</p>
+                            <p class="pipe-sub">Running 2x daily</p>
+                        </div>
+                    </div>
+                    <div class="pipeline-card done">
+                        <div class="pipe-agent">🤖</div>
+                        <div>
+                            <p class="pipe-title">QMD Memory Engine</p>
+                            <p class="pipe-sub">Session transcripts indexed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Activity Feed -->
+        <section class="section">
+            <h2 class="section-title">📡 Activity Feed</h2>
+            <div class="feed">
+                <div class="feed-item">
+                    <span class="feed-time">7:21 PM</span>
+                    <span class="feed-agent">💻</span>
+                    <span class="feed-text">Website updated — MAX voice intro + audio player + "New to AI?" section deployed</span>
+                </div>
+                <div class="feed-item">
+                    <span class="feed-time">6:00 PM</span>
+                    <span class="feed-agent">📢</span>
+                    <span class="feed-text">X auto-post published — evening slot</span>
+                </div>
+                <div class="feed-item">
+                    <span class="feed-time">4:00 PM</span>
+                    <span class="feed-agent">🔍</span>
+                    <span class="feed-text">Research Agent afternoon scan complete — 3 opportunities found</span>
+                </div>
+                <div class="feed-item">
+                    <span class="feed-time">2:02 PM</span>
+                    <span class="feed-agent">🔍</span>
+                    <span class="feed-text">CleanScan research complete — Open Food Facts API confirmed, competitor analysis done</span>
+                </div>
+                <div class="feed-item">
+                    <span class="feed-time">1:47 PM</span>
+                    <span class="feed-agent">🤖</span>
+                    <span class="feed-text">QMD memory engine installed — 14 session transcripts indexed</span>
+                </div>
+                <div class="feed-item">
+                    <span class="feed-time">1:22 PM</span>
+                    <span class="feed-agent">🤖</span>
+                    <span class="feed-text">Research Agent + Coding Agent specs created and cron jobs activated</span>
+                </div>
+                <div class="feed-item">
+                    <span class="feed-time">1:00 PM</span>
+                    <span class="feed-agent">📢</span>
+                    <span class="feed-text">X auto-post published — afternoon slot</span>
+                </div>
+                <div class="feed-item">
+                    <span class="feed-time">12:47 PM</span>
+                    <span class="feed-agent">💻</span>
+                    <span class="feed-text">Website deployed to GitHub Pages — Formspree contact form connected</span>
+                </div>
+                <div class="feed-item">
+                    <span class="feed-time">12:13 PM</span>
+                    <span class="feed-agent">💻</span>
+                    <span class="feed-text">GitHub repo created — Todd2448/maxs-ai-solutions-site pushed</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Info -->
+        <section class="section">
+            <h2 class="section-title">⚙️ Infrastructure</h2>
+            <div class="infra-grid">
+                <div class="infra-card">
+                    <div class="infra-icon">🖥️</div>
+                    <h4>Queen (Mac Studio)</h4>
+                    <p>Gateway Host — 24/7 LaunchAgent</p>
+                    <span class="infra-status status-green">Running</span>
+                </div>
+                <div class="infra-card">
+                    <div class="infra-icon">💬</div>
+                    <h4>Telegram</h4>
+                    <p>Primary communication channel</p>
+                    <span class="infra-status status-green">Connected</span>
+                </div>
+                <div class="infra-card">
+                    <div class="infra-icon">🌐</div>
+                    <h4>Website</h4>
+                    <p>GitHub Pages — maxsaisolutions.com</p>
+                    <span class="infra-status status-green">Live</span>
+                </div>
+                <div class="infra-card">
+                    <div class="infra-icon">🐦</div>
+                    <h4>X / Twitter</h4>
+                    <p>Auto-posting — text only (free tier)</p>
+                    <span class="infra-status status-green">Active</span>
+                </div>
+                <div class="infra-card">
+                    <div class="infra-icon">📝</div>
+                    <h4>Notion</h4>
+                    <p>MAX HQ — direct write access</p>
+                    <span class="infra-status status-green">Connected</span>
+                </div>
+                <div class="infra-card">
+                    <div class="infra-icon">🔊</div>
+                    <h4>ElevenLabs</h4>
+                    <p>TTS — Liam voice (Creator tier)</p>
+                    <span class="infra-status status-green">Active</span>
+                </div>
+                <div class="infra-card">
+                    <div class="infra-icon">💳</div>
+                    <h4>Stripe</h4>
+                    <p>Payments — bank info added</p>
+                    <span class="infra-status status-yellow">Setup</span>
+                </div>
+                <div class="infra-card">
+                    <div class="infra-icon">📞</div>
+                    <h4>Twilio</h4>
+                    <p>SMS/Voice — waiting A2P approval</p>
+                    <span class="infra-status status-yellow">Pending</span>
+                </div>
+                <div class="infra-card">
+                    <div class="infra-icon">🌍</div>
+                    <h4>Namecheap</h4>
+                    <p>Domains — account locked, ticket open</p>
+                    <span class="infra-status status-red">Issue</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Revenue Tracker -->
+        <section class="section">
+            <h2 class="section-title">💰 Revenue Tracker</h2>
+            <div class="revenue-grid">
+                <div class="revenue-card">
+                    <span class="revenue-label">Annual Target</span>
+                    <span class="revenue-value">$1,000,000</span>
+                </div>
+                <div class="revenue-card">
+                    <span class="revenue-label">Monthly Target</span>
+                    <span class="revenue-value">$83,333</span>
+                </div>
+                <div class="revenue-card">
+                    <span class="revenue-label">Revenue to Date</span>
+                    <span class="revenue-value revenue-current">$0</span>
+                </div>
+                <div class="revenue-card">
+                    <span class="revenue-label">Active Leads</span>
+                    <span class="revenue-value">0</span>
+                </div>
+            </div>
+            <div class="revenue-bar-wrapper">
+                <div class="revenue-bar">
+                    <div class="revenue-fill" style="width: 0.1%"></div>
+                </div>
+                <p class="revenue-note">Day 4 of 365 — Building the foundation</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>MAX Mission Control ⚡ — Max's AI Solutions | Powered by OpenClaw on Queen</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
